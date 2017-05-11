@@ -1,28 +1,21 @@
-class Guesser:
-    def __init__(self, number,lives):
-        self.number = number
-        self.lives = lives
+def digital_root(number):
+    sum = 0
+    numberLength = len(str(number))
+    firstIteration = True
+    
+    while numberLength > 1 or firstIteration:
+        sum = 0
+        firstIteration = False
+        for i in range(0, numberLength):
+            num = str(number)
+            sum = sum + int(num[i])
 
-    def guess(self, number):
-        if self.lives == 0:
-            print("You lost!")
-            return False
-        if number == self.number: print("You won!")
-        else:
-            self.lives -= 1
-            if self.lives != 1:
-                print("You still have %d lives!" % self.lives)
-                return False
-            if self.lives == 1:
-                print("You still have %d life!" % self.lives)
-                return False
-            if self.lives == 0:
-                print("Last chance!")
-                return False
+        numberLength = len(str(sum))
+        number = sum
+        
+    return sum
 
-guesser = Guesser(5, 3)
-
-guesser.guess(2)
-guesser.guess(1)
-guesser.guess(3)
-guesser.guess(0)
+print(digital_root(888))
+print(digital_root(111))
+print(digital_root(16))
+print(digital_root(7))
