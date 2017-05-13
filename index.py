@@ -1,21 +1,16 @@
-def digital_root(number):
-    sum = 0
-    numberLength = len(str(number))
-    firstIteration = True
-    
-    while numberLength > 1 or firstIteration:
-        sum = 0
-        firstIteration = False
-        for i in range(0, numberLength):
-            num = str(number)
-            sum = sum + int(num[i])
+def solution(digits):
+    slicesArray = []
+    digits = str(digits)
+    for i in range(0, len(digits) - 4):
+        slice = digits[i: i + 5]
+        print(slice)
+        slicesArray.append(int(slice))
 
-        numberLength = len(str(sum))
-        number = sum
-        
-    return sum
+    max = slicesArray[0]
+    for i in range(1, len(slicesArray)):
+        if slicesArray[i] > max:
+            max = slicesArray[i]
 
-print(digital_root(888))
-print(digital_root(111))
-print(digital_root(16))
-print(digital_root(7))
+    return max
+
+print(solution(35421234523))
